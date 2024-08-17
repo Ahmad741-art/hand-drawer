@@ -1,0 +1,62 @@
+import turtle
+
+# Set up the turtle screen
+screen = turtle.Screen()
+screen.bgcolor("white")
+
+# Create a turtle object
+hand_drawer = turtle.Turtle()
+hand_drawer.speed(2)
+
+def draw_finger(length):
+    hand_drawer.forward(length)
+    hand_drawer.right(90)
+    hand_drawer.forward(20)
+    hand_drawer.right(90)
+    hand_drawer.forward(length)
+    hand_drawer.left(90)
+    hand_drawer.penup()
+    hand_drawer.forward(20)
+    hand_drawer.left(90)
+    hand_drawer.pendown()
+
+def draw_hand():
+    # Draw the palm
+    hand_drawer.penup()
+    hand_drawer.goto(-50, -50)
+    hand_drawer.pendown()
+    hand_drawer.setheading(0)
+    hand_drawer.forward(100)
+    hand_drawer.left(90)
+    hand_drawer.forward(100)
+    hand_drawer.left(90)
+    hand_drawer.forward(100)
+    hand_drawer.left(90)
+    hand_drawer.forward(100)
+    hand_drawer.left(90)
+
+    # Position for the thumb
+    hand_drawer.penup()
+    hand_drawer.goto(-50, 50)
+    hand_drawer.setheading(45)
+    hand_drawer.pendown()
+
+    # Draw the thumb
+    draw_finger(60)
+
+    # Position for the first finger
+    hand_drawer.penup()
+    hand_drawer.goto(-50, 50)
+    hand_drawer.setheading(90)
+    hand_drawer.pendown()
+
+    # Draw the fingers
+    for _ in range(4):
+        draw_finger(80)
+
+# Draw the hand
+draw_hand()
+
+# Hide the turtle and display the window
+hand_drawer.hideturtle()
+turtle.done()
